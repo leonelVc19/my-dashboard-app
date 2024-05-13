@@ -1,1 +1,5 @@
-<app-title title="Change Detection" />
+<app-title [title]="currentFramework()" />
+
+
+<pre>{{ frameworkasSignal() | json}}</pre>
+<pre>{{ frameworkasPropertie | json}}</pre>

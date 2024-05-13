@@ -1,2 +1,125 @@
 
-<app-title title="Defer Options"  />
+<app-title title="Defer Triggers Options"  />
+
+<section>
+    <h1 class="text-xl">Interacciones</h1>
+    <hr class="my-2">
+    <!-- este es cuando hay interacion -->
+    @defer ( on interaction ) {
+        <app-heavy-loaders-fast cssClass="bg-blue-500 h-20 text-white rounded-xl"> 
+            On interaction
+        </app-heavy-loaders-fast>
+    } @placeholder {
+        <div class="w-full h-20 bg-purple-100">
+            click on div on interaction
+        </div>
+    }
+</section>
+<br>
+
+
+<!-- basada en una accion basado en otro componente -->
+<hr class="my-2">
+<button #btnInteraction class="p-2 bg-blue-500 hover:bg-blue-200 transition-all rounded text-white my-2">
+    Click Me!!
+</button>
+<section>
+    <h1 class="text-xl">Click en el elementos </h1>
+    <!-- este es cuando hay interacion -->
+    @defer ( on interaction( btnInteraction ) ) {
+        <app-heavy-loaders-fast cssClass="bg-blue-500 h-20 text-white rounded-xl"> 
+            On interaction( btnInteraction  )
+        </app-heavy-loaders-fast>
+    } @placeholder {
+        <div class="w-full h-20 bg-purple-100">
+            Text on the button on interaction( btnInteraction  )
+        </div> 
+    }
+</section>
+
+
+
+<br>
+<!-- hover cuando este sobre  -->
+<hr class="my-2">
+<section>
+    <h1 class="text-xl">Click en el elementos </h1>
+    <!-- este es cuando hay interacion -->
+    @defer ( on hover ) {
+        <app-heavy-loaders-fast cssClass="bg-blue-500 h-20 text-white rounded-xl"> 
+            On hover
+        </app-heavy-loaders-fast>
+    } @placeholder {
+        <div class="w-full h-20 bg-purple-100">
+            Text on the button hover
+        </div>
+    }
+</section>
+
+
+<br>
+<!-- hover cuando este sobre   with button-->
+<button #btnInteractionHover class="p-2 bg-blue-500 hover:bg-blue-200 transition-all rounded text-white my-2">
+    Click Me!!
+</button>
+<section>
+    <h1 class="text-xl">Click en el elementos </h1>
+    @defer ( on hover( btnInteractionHover )) {
+        <app-heavy-loaders-fast cssClass="bg-blue-500 h-20 text-white rounded-xl"> 
+            On hover( btnInteractionHover  )
+        </app-heavy-loaders-fast>
+    } @placeholder {
+        <div class="w-full h-20 bg-purple-100">
+            Div componente que se renderiza
+        </div> 
+    }
+</section>
+<br>
+
+
+
+<!-- Tran pronto pueda cargue el componen, se termina de cargar la aplizacion carga -->
+<section>
+    <h1 class="text-xl">Click en el elementos </h1>
+    @defer ( on immediate ) {
+        <app-heavy-loaders-fast cssClass="bg-blue-500 h-20 text-white rounded-xl"> 
+            On immediate
+        </app-heavy-loaders-fast>
+    } @placeholder {
+        <div class="w-full h-20 bg-purple-100">
+            Div componente que se renderiza
+        </div> 
+    }
+</section>
+
+
+<!-- Timer con milesimas de segundo-->
+<section>
+    <h1 class="text-xl">Click en el elementos </h1>
+    @defer ( on timer( 2s ) ) {
+        <app-heavy-loaders-fast cssClass="bg-green-500 h-20 text-white rounded-xl"> 
+            On timer
+        </app-heavy-loaders-fast>
+    } @placeholder {
+        <div class="w-full h-20 bg-purple-100">
+            Div componente que se renderiza
+        </div> 
+    }
+</section>
+
+
+
+<!-- Convinacion de varias  por si el componente es muy pesado o peticiones en cascada -->
+
+<section>
+    <h1 class="text-xl">Click en el elementos </h1>
+    @defer ( on hover; prefetch on idle ) {
+        <app-heavy-loaders-fast cssClass="bg-green-500 h-20 text-white rounded-xl"> 
+            On hover, idle
+        </app-heavy-loaders-fast>
+    } @placeholder {
+        <div class="w-full h-20 bg-purple-100">
+            hover
+        </div> 
+    }
+</section>
