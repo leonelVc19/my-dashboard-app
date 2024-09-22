@@ -1,2 +1,9 @@
 <h2 class="text-3xl">Lista de productos</h2>
 <hr class="my-2">
+
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+    <!-- para el uso de la signal es con name_signal() |||| para hacer el track es mejor por el id del producto-->
+    @for (product of products(); track product.id) { 
+        <app-product-card />
+    }
+</div>
