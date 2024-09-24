@@ -50,12 +50,27 @@ export const routes: Routes = [
         title: 'Inputs And Outputs',
         loadComponent: () => import('./dashboard/pages/input-outputs/input-outputs.component')
       },
+      {
+        path: 'material',
+        title: 'Angular Material',
+        loadComponent: () => import('./dashboard/pages/material/material.component')
+      },
       { path: '', redirectTo: 'control-flow', pathMatch: 'full' }
     ]
   },
   {
     path: '**',
-    redirectTo: '/dashboard',
+    // redirectTo: '/dashboard',
+    redirectTo: (route) => { // no es async
+      //como es uyna funcion se puede hacer injecion de
+      // const AutServices = inject(AuthServices);
+      // if(AutServices.isLoggedIn) {
+        //al login
+      // }
+      //No login
+      console.log(route);
+      return '/dashboard';
+    },
     pathMatch: 'full',
   },
 ];
